@@ -1,0 +1,24 @@
+
+テーブルに情報を追加する。
+aws dynamodb put-item --table-name dynamodb2 --item '{ "id": {"N": "1"}, "first_name": {"S": "Jun"}, "last_name": { "S": "Chiba"}, "Score": {"N": "50"}}'
+aws dynamodb put-item --table-name dynamodb2 --item '{ "id": {"N": "2"}, "first_name": {"S": "James"}, "last_name": { "S": "Smith"}, "Score": {"N": "50"}}'
+aws dynamodb put-item --table-name dynamodb2 --item '{ "id": {"N": "3"}, "first_name": {"S": "Robert"}, "last_name": { "S": "Johnson"}, "Score": {"N": "50"}}'
+aws dynamodb put-item --table-name dynamodb2 --item '{ "id":{"N":"5"}, "first_name":{"S":"Richard"},"last_name":{"S":"Moore"},"Score":{"N":"50"}}'
+
+指定の項目を取得する
+aws dynamodb get-item --table-name dynamodb2 --key '{ "id": {"N": "1" }  }'
+
+テーブル中の全て情報を取得する
+aws dynamodb scan --table-name dynamodb2 
+
+指定項目の情報更新
+aws dynamodb update-item --table-name dynamodb2 --key '{"id":{"N":"5"}}' --attribute-updates '{"first_name":{"Action":"PUT", "Value":{"S":"JunJun"}}}'
+
+指定項目の属性の加算
+aws dynamodb update-item --table-name dynamodb2 --key '{"id":{"N":"5"}}' --attribute-updates '{"Score":{"Action":"ADD", "Value":{"N":"9"}}}'
+
+指定項目の属性の削除
+aws dynamodb update-item --table-name dynamodb2 --key '{"id":{"N":"5"}}' --attribute-updates '{"Score":{"Action":"DELETE"}}'
+
+テールの削除
+aws dynamodb delete-table --table-name dynamodb2
