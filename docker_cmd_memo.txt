@@ -1,0 +1,30 @@
+docker commit -m="php+httpd update" -a "lintest" 9e098c2e78a4 lintest/amazonlinux:v2
+
+docker run -i -d -p 8090:80 320959051223.dkr.ecr.ap-northeast-1.amazonaws.com/lin:latest
+
+docker exec -ti kind_darwin /sbin/service httpd start
+
+変化表示：
+docker diff 81f6f5838f96
+
+docker attach xxxxxxxxx
+
+
+docker import http://example.com/example.tar
+
+docker export  xxxxx >exam.tar
+
+docker cp 81f6f5838f96:/var/www/html/index.php ./
+
+docker login server:port
+
+
+docker inspect 81f6f5838f96
+
+docker inspect --format='{{.NetworkSettings.IPAddress}}' 81f6f5838f96
+
+docker kill xxxxxx
+
+docker rmi image
+
+docker run -i -t --link slb_nginx1:slb_nginx1 320959051223.dkr.ecr.ap-northeast-1.amazonaws.com/lin:latest
